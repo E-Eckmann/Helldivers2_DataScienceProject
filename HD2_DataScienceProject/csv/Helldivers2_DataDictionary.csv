@@ -1,0 +1,24 @@
+Field,Data type,Description
+index,int64,The index associated with a planet.
+name,string,The planet's name.
+sector,string,The sector the planet resides in. Sectors act like regions of space on the in-game map where multiple planets can be found.
+biome,object,"The biome of the planet. This field is a dictionary which contains key value pairs for 'name' and 'description'. The name is what the planet's biome is called. The description is consistent with the biome's name. For example, all Jungle biome planets will have the description: 'Abundant with life, this wet planet is covered in deep oceans, thick forests, and tall grasses'."
+hazards,object,"The hazards present on the planet. This field is a list of dictionaries which contains key value pairs for 'name' (the name of the hazard), and 'description' (the description of the hazard)."
+initialOwner,string,The name of the faction who initially owned the planet at the start of the current war.
+currentOwner,string,The name of the faction who currently owns the planet.
+missionsWon,int64,"The total missions won for a planet. To consider a mission a win, a team of players must complete all primary objectives in a mission."
+missionsLost,int64,"The total missions lost for a planet. To consider a mission a loss, a team of players must fail at completing all primary objectives before the final mission time limit OR have depleted their avalible reinforcements with all players dead before completing all primary objectives."
+missionTime,int64,"The total time players have spent in missions on a planet in seconds. It is unclear if this number is being summed by accounting for each player for a mission, or each team of players for a mission."
+terminidKills,int64,The amount of terminid faction enemies killed on a planet.
+automatonKills,int64,The amount of automaton faction enemies killed on a planet.
+illuminateKills,int64,The amount of illuminate faction enemies killed on a planet.
+bulletsFired,int64,The amount of bullets fired on a planet. Note that some explosive weapons can hit multiple enemies in one 'bullet'. Note that it is possible (but unconfirmed) that the firing of a continous laser weapon may only count as one 'bulletsFired' but multiple 'bulletsHit'.
+bulletsHit,int64,The amount of bullets that hit an enemy on a planet. Note that some explosive weapons can hit multiple enemies in one 'bullet'. Note that it is possible (but unconfirmed) that the firing of a continous laser weapon may only count as one 'bulletsFired' but multiple 'bulletsHit'.
+timePlayed,int64,"Identical to 'missionTime' field. Purpose is unclear, may simply be redundant data."
+deaths,int64,Number of player deaths that have occured on a planet.
+revives,int64,Unused data field. Purpose unclear.
+friendlies,int64,Unclear meaning. Assumed to be friendly fire kills for a planet due to the fact that it always contains a value lower than the 'deaths' field value.
+missionSuccessRate,int64,The rate (percent) of missions won divided by total missions * 100 for a planet
+accuracy,int64,Percent calculated by 'bulletsHit' divided by 'bulletsFired' * 100. Capped at the value 100. Note that some explosive weapons can hit multiple enemies in one 'bullet'. Note that it is possible (but unconfirmed) that the firing of a continous laser weapon may only count as one 'bulletsFired' but multiple 'bulletsHit'. This often leads to a misleadingly high accuracy value for most planets
+playerCount,int64,The amount of players currently located on a planet either in mission or on board their super destroyer at the time data was collected. Note that some planets will appear to have a playerCount value above 0 even when they are inaccessible in game. This may be due to developer testing or players logging off at a planet during a campaign.
+killDeathRatio,float64,"Field not originally from the API. Created for data analysis in this project, but also included in CSV files 'B' and 'C' for ease of use in any later analysis by others. Calculated by the sum of 'terminidKills', 'automatonKills', and 'illuminateKills' divided by 'deaths' in a planet."
